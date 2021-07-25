@@ -35,11 +35,11 @@ jobs:
           mkdir cmake-build-release ;
           cd cmake-build-release ;
           cmake -DCMAKE_INSTALL_PREFIX=c:/MSFS-SimConnect .. ;
-          cmake --build . --target ALL_BUILD --config Release  ;
+          cmake --build .  --config Release  ;
           cmake --install . ;
           cd .. ;
           mkdir release-artifacts;
-          powershell -C  "&  Compress-Archive -Path C:\MSFS-SimConnect -DestinationPath release-artifacts\msfs-simconnect-data-$env:GITHUB_RUN_NUMBER.zip " ;
+          powershell -C  "&  Compress-Archive -Path C:/MSFS-SimConnect -DestinationPath release-artifacts/msfs-simconnect-data-$env:GITHUB_RUN_NUMBER.zip " ;
           dumpbin /dependents C:/MSFS-SimConnect/bin/MSFS-SimConnect-Data-CLI.exe  ;
 
       - uses: actions/upload-artifact@v2
